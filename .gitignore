@@ -1,0 +1,6 @@
+.cargo
+.docker-root
+.gitpod
+mysql
+.pgsql
+.vscode-remote
