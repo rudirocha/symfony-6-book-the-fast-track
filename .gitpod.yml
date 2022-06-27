@@ -27,6 +27,6 @@ ports:
 tasks:
   - name: Initialize workspace
     before: sh ./bash/initial-setup.sh
-    init: echo "==> NO INIT SCRIPT"
+    init: symfony server:start
     command: echo "==> NO COMMAND SCRIPT"
     openMode: split-right #OR: split-left, tab-after, tab-before
