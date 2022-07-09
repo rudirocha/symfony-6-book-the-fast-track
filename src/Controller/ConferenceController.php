@@ -25,19 +25,20 @@ class ConferenceController extends AbstractController
     public function index(ConferenceRepository $conferenceRepository): Response
     {
         return new Response($this->twig->render('conference/index.html.twig', [
-                        'conferences' => $conferenceRepository->findAll(),
+                        //'conferences' => $conferenceRepository->findAll(),
         ]));
         return $this->render('conference/index.html.twig', [
             'controller_name' => 'ConferenceController',
         ]);
     }
     #[Route('/conferences/{id}', name: 'conference')]
-    public function detail(Request $request, Conference $conference, CommentRepository $commentRepository)
+    public function detail(Request $request, Conference $conference, ConferenceRepository $conferenceRepository, CommentRepository $commentRepository)
     {
         $offset = max(0, $request->query->get('offset'));
         $paginator = $commentRepository->getCommentPaginator($conference, $offset);
         return new Response(
             $this->twig->render('conference/show.html.twig',[
+                'conferences' => $conferenceRepository->findAll(),
                 'conference' => $conference,
                 'comments' => $paginator,
                 'previous' => $offset - CommentRepository::PAGINATOR_PER_PAGE,
