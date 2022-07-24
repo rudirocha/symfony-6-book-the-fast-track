@@ -6,6 +6,8 @@ mysql
 .pgsql
 .vscode-remote
 
+/public/uploads
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
